@@ -1,0 +1,244 @@
+/* ========================================
+   CREATE EXAM PAGE
+======================================== */
+
+.create-exam-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7ff;
+  box-sizing: border-box;
+}
+
+
+/* ========================================
+   PAGE HEADER
+======================================== */
+
+.create-exam-page h1 {
+  margin: 0 0 30px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+
+/* ========================================
+   FORM CARD
+======================================== */
+
+.create-exam-page form {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+  box-sizing: border-box;
+}
+
+
+/* ========================================
+   INPUTS
+======================================== */
+
+.create-exam-page input,
+.create-exam-page textarea {
+  width: 100%;
+  padding: 13px 15px;
+  margin-bottom: 20px;
+
+  border: 1px solid #d8deea;
+  border-radius: 9px;
+
+  background: #ffffff;
+  color: #1e293b;
+
+  font-size: 15px;
+  font-family: inherit;
+
+  outline: none;
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* ========================================
+   INPUT FOCUS
+======================================== */
+
+.create-exam-page input:focus,
+.create-exam-page textarea:focus {
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+/* ========================================
+   TEXTAREA
+======================================== */
+
+.create-exam-page textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+
+/* ========================================
+   FILE INPUT
+======================================== */
+
+.create-exam-page input[type="file"] {
+  padding: 12px;
+  background: #f8f9ff;
+  cursor: pointer;
+}
+
+
+/* ========================================
+   FILE INPUT HOVER
+======================================== */
+
+.create-exam-page input[type="file"]:hover {
+  border-color: #6366f1;
+}
+
+
+/* ========================================
+   CREATE BUTTON
+======================================== */
+
+.create-exam-page button {
+  width: 100%;
+  padding: 14px 20px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #6366f1;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* ========================================
+   BUTTON HOVER
+======================================== */
+
+.create-exam-page button:hover {
+  background: #4f46e5;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 15px rgba(79, 70, 229, 0.25);
+}
+
+
+/* ========================================
+   BUTTON DISABLED
+======================================== */
+
+.create-exam-page button:disabled {
+  background: #a5b4fc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* ========================================
+   SUCCESS MESSAGE
+======================================== */
+
+.create-exam-page form + p {
+  max-width: 850px;
+  margin: 20px auto 0;
+
+  padding: 12px 15px;
+
+  border-radius: 8px;
+
+  background: #ecfdf5;
+  color: #047857;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+/* ========================================
+   ERROR MESSAGE
+======================================== */
+
+.create-exam-page p {
+  font-size: 14px;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .create-exam-page {
+    padding: 25px 15px;
+  }
+
+  .create-exam-page h1 {
+    font-size: 27px;
+    margin-bottom: 22px;
+  }
+
+  .create-exam-page form {
+    padding: 25px 20px;
+  }
+
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .create-exam-page {
+    padding: 20px 12px;
+  }
+
+  .create-exam-page h1 {
+    font-size: 24px;
+  }
+
+  .create-exam-page form {
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+
+  .create-exam-page input,
+  .create-exam-page textarea {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .create-exam-page button {
+    font-size: 15px;
+  }
+
+}

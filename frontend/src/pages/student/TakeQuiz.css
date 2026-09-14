@@ -1,0 +1,724 @@
+/* ========================================
+   TAKE QUIZ PAGE
+======================================== */
+
+.take-quiz-page {
+  min-height: 100vh;
+  padding: 32px;
+
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.09),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(139, 92, 246, 0.07),
+      transparent 28%
+    ),
+    #f8fafc;
+
+  color: #0f172a;
+}
+
+
+/* ========================================
+   QUIZ HEADER
+======================================== */
+
+.take-quiz-header {
+  max-width: 900px;
+
+  margin: 0 auto 28px;
+
+  padding: 28px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f8faff
+    );
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.06);
+
+  text-align: center;
+}
+
+
+.take-quiz-header::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #8b5cf6,
+      #a855f7
+    );
+}
+
+
+/* ========================================
+   BACK BUTTON
+======================================== */
+
+.back-button {
+  position: absolute;
+
+  top: 24px;
+  left: 24px;
+
+  padding: 8px 12px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 9px;
+
+  background: #f8fafc;
+
+  color: #475569;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.back-button:hover {
+  background: #eef2ff;
+
+  border-color: #c7d2fe;
+
+  color: #4f46e5;
+
+  transform: translateX(-2px);
+}
+
+
+/* ========================================
+   SUBJECT
+======================================== */
+
+.take-quiz-header .quiz-subject {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 25px 0 12px;
+
+  padding: 7px 13px;
+
+  background: #eef2ff;
+
+  border: 1px solid #e0e7ff;
+
+  border-radius: 20px;
+
+  color: #4f46e5;
+
+  font-size: 10px;
+
+  font-weight: 750;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* ========================================
+   QUIZ TITLE
+======================================== */
+
+.take-quiz-header h1 {
+  margin: 0 0 8px;
+
+  color: #0f172a;
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.6px;
+
+  line-height: 1.3;
+
+  overflow-wrap: anywhere;
+}
+
+
+.take-quiz-header p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   SUBMIT ERROR
+======================================== */
+
+.quiz-submit-error {
+  max-width: 900px;
+
+  margin: 0 auto 20px;
+
+  padding: 12px 15px;
+
+  box-sizing: border-box;
+
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 11px;
+
+  color: #dc2626;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+/* ========================================
+   QUESTIONS CONTAINER
+======================================== */
+
+.questions-container {
+  max-width: 900px;
+
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   QUESTION CARD
+======================================== */
+
+.question-card {
+  position: relative;
+
+  margin-bottom: 20px;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.05);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.question-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 4px;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      #6366f1,
+      #8b5cf6
+    );
+}
+
+
+.question-card:hover {
+  border-color: #c7d2fe;
+
+  box-shadow:
+    0 12px 30px rgba(79, 70, 229, 0.08);
+}
+
+
+/* ========================================
+   QUESTION NUMBER
+======================================== */
+
+.question-number {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 6px 10px;
+
+  margin-bottom: 13px;
+
+  background: #f5f3ff;
+
+  border: 1px solid #ede9fe;
+
+  border-radius: 8px;
+
+  color: #7c3aed;
+
+  font-size: 10px;
+
+  font-weight: 750;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+}
+
+
+/* ========================================
+   QUESTION TEXT
+======================================== */
+
+.question-card h2 {
+  margin: 0 0 20px;
+
+  color: #0f172a;
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  line-height: 1.6;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   OPTIONS
+======================================== */
+
+.options-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 11px;
+}
+
+
+.option {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-height: 48px;
+
+  padding: 12px 15px;
+
+  box-sizing: border-box;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 11px;
+
+  color: #334155;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.option:hover {
+  background: #f5f7ff;
+
+  border-color: #c7d2fe;
+
+  transform: translateX(2px);
+}
+
+
+.option.selected {
+  background:
+    linear-gradient(
+      135deg,
+      #eef2ff,
+      #f5f3ff
+    );
+
+  border-color: #818cf8;
+
+  color: #3730a3;
+
+  box-shadow:
+    0 5px 15px rgba(99, 102, 241, 0.1);
+}
+
+
+/* ========================================
+   RADIO BUTTON
+======================================== */
+
+.option input[type="radio"] {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+
+  margin: 0;
+
+  accent-color: #6366f1;
+
+  cursor: pointer;
+}
+
+
+.option span {
+  flex: 1;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   SUBMIT SECTION
+======================================== */
+
+.submit-quiz-section {
+  margin: 28px 0 10px;
+
+  padding: 24px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f8faff
+    );
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.05);
+}
+
+
+.submit-quiz-section p {
+  margin: 0 0 16px;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+
+/* ========================================
+   SUBMIT BUTTON
+======================================== */
+
+.submit-quiz-btn {
+  min-width: 190px;
+
+  padding: 13px 22px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #7c3aed
+    );
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 750;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 18px rgba(79, 70, 229, 0.2);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.submit-quiz-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(79, 70, 229, 0.3);
+}
+
+
+.submit-quiz-btn:active {
+  transform: translateY(0);
+}
+
+
+.submit-quiz-btn:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+
+/* ========================================
+   ERROR PAGE
+======================================== */
+
+.quiz-error-page {
+  min-height: 70vh;
+
+  padding: 40px 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.08),
+      transparent 30%
+    ),
+    #f8fafc;
+}
+
+
+.quiz-error-page h2 {
+  margin: 0 0 10px;
+
+  color: #0f172a;
+
+  font-size: 24px;
+}
+
+
+.quiz-error-page p {
+  max-width: 500px;
+
+  margin: 0 0 20px;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+.quiz-error-page button {
+  padding: 11px 18px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #7c3aed
+    );
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.quiz-error-page button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 18px rgba(79, 70, 229, 0.25);
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .take-quiz-page {
+    padding: 22px 15px;
+  }
+
+
+  .take-quiz-header {
+    padding: 24px 20px;
+  }
+
+
+  .take-quiz-header h1 {
+    font-size: 25px;
+  }
+
+
+  .take-quiz-header .quiz-subject {
+    margin-top: 30px;
+  }
+
+
+  .question-card {
+    padding: 20px;
+  }
+
+
+  .question-card h2 {
+    font-size: 16px;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .take-quiz-page {
+    padding: 15px 12px;
+  }
+
+
+  .take-quiz-header {
+    padding: 20px 16px;
+  }
+
+
+  .back-button {
+    position: static;
+
+    display: block;
+
+    margin-bottom: 12px;
+  }
+
+
+  .take-quiz-header .quiz-subject {
+    margin-top: 5px;
+  }
+
+
+  .take-quiz-header h1 {
+    font-size: 21px;
+  }
+
+
+  .take-quiz-header p {
+    font-size: 12px;
+  }
+
+
+  .question-card {
+    padding: 18px 16px;
+  }
+
+
+  .question-card h2 {
+    font-size: 15px;
+
+    line-height: 1.5;
+  }
+
+
+  .option {
+    padding: 11px 12px;
+
+    font-size: 12px;
+  }
+
+
+  .submit-quiz-section {
+    padding: 20px 15px;
+  }
+
+
+  .submit-quiz-btn {
+    width: 100%;
+  }
+
+}

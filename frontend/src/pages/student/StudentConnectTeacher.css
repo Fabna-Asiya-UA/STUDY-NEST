@@ -1,0 +1,470 @@
+/* ========================================
+   CONNECT TEACHER CARD
+======================================== */
+
+.connect-teacher-card {
+  width: 100%;
+
+  max-width: 1200px;
+
+  margin: 0 auto 28px;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f8fafc
+    );
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 28px rgba(15, 23, 42, 0.06);
+}
+
+
+.connect-teacher-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6366f1,
+      #8b5cf6
+    );
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.connect-teacher-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 22px;
+}
+
+
+.connect-teacher-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eef2ff,
+      #f5f3ff
+    );
+
+  border: 1px solid #e0e7ff;
+
+  border-radius: 14px;
+
+  font-size: 24px;
+
+  box-shadow:
+    0 6px 16px rgba(99, 102, 241, 0.1);
+}
+
+
+.connect-teacher-header h2 {
+  margin: 0 0 5px;
+
+  color: #0f172a;
+
+  font-size: 19px;
+
+  font-weight: 750;
+}
+
+
+.connect-teacher-header p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   FORM
+======================================== */
+
+.connect-teacher-form {
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 14px;
+}
+
+
+.connection-input-wrapper {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.connection-input-wrapper label {
+  margin-bottom: 7px;
+
+  color: #334155;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.connection-input-wrapper input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 13px 15px;
+
+  background: #ffffff;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 11px;
+
+  color: #0f172a;
+
+  font-size: 15px;
+
+  letter-spacing: 2px;
+
+  outline: none;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.connection-input-wrapper input:focus {
+  background: #ffffff;
+
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+
+.connection-input-wrapper input::placeholder {
+  color: #94a3b8;
+
+  letter-spacing: 0;
+
+  font-size: 13px;
+}
+
+
+.connection-code-hint {
+  margin-top: 6px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+
+/* ========================================
+   BUTTON
+======================================== */
+
+.connect-teacher-btn {
+  min-width: 145px;
+
+  height: 46px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 0 18px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4f46e5,
+      #7c3aed
+    );
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 17px rgba(79, 70, 229, 0.2);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+.connect-teacher-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 11px 24px rgba(79, 70, 229, 0.28);
+}
+
+
+.connect-teacher-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+
+.connect-teacher-btn span {
+  font-size: 18px;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.connect-teacher-btn:hover:not(:disabled) span {
+  transform: translateX(4px);
+}
+
+
+.connect-teacher-btn:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+/* ========================================
+   SUCCESS MESSAGE
+======================================== */
+
+.connect-success-message {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 18px;
+
+  padding: 12px 15px;
+
+  background: #ecfdf5;
+
+  border: 1px solid #a7f3d0;
+
+  border-radius: 11px;
+
+  color: #047857;
+}
+
+
+.connect-success-message > span {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #10b981;
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+.connect-success-message p {
+  margin: 0;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   ERROR MESSAGE
+======================================== */
+
+.connect-error-message {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 18px;
+
+  padding: 12px 15px;
+
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 11px;
+
+  color: #dc2626;
+}
+
+
+.connect-error-message > span {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+.connect-error-message p {
+  margin: 0;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 650px) {
+
+  .connect-teacher-card {
+    padding: 20px;
+  }
+
+
+  .connect-teacher-form {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .connect-teacher-btn {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 450px) {
+
+  .connect-teacher-card {
+    padding: 18px;
+
+    border-radius: 16px;
+  }
+
+
+  .connect-teacher-header {
+    align-items: flex-start;
+  }
+
+
+  .connect-teacher-icon {
+    width: 45px;
+    height: 45px;
+
+    font-size: 21px;
+  }
+
+
+  .connect-teacher-header h2 {
+    font-size: 17px;
+  }
+
+
+  .connect-teacher-header p {
+    font-size: 12px;
+  }
+
+}
