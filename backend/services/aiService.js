@@ -11,14 +11,29 @@ const sleep = (ms) => {
 };
 
 export const generateAIResponse = async (message) => {
+
+  const models = [
+    "gemini-3.7-flash",
+    "gemini-3.5-flash-lite"
+  ];
+
   let lastError;
 
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    try {
-      const response = await ai.models.generateContent({
-        model: "gemini-3.7-flash",
+  for (const model of models) {
 
-        contents: `
+    for (let attempt = 1; attempt <= 2; attempt++) {
+
+      try {
+
+        console.log(
+          `Trying ${model} - Attempt ${attempt}`
+        );
+
+        const response = await ai.models.generateContent({
+
+          model: model,
+
+          contents: `
 You are StudyNest AI Assistant.
 
 Your job is to help students learn.
@@ -33,28 +48,44 @@ Rules:
 - Help students prepare for quizzes and exams.
 - Help students create study plans.
 - Do not unnecessarily make answers complicated.
-- If a student asks for an academic explanation, teach the concept rather than only giving the final answer.
+- If a student asks for an academic explanation,
+  teach the concept rather than only giving the final answer.
 
 Student Question:
 
 ${message}
-        `
-      });
+          `
+        });
 
-      return response.text;
+        console.log(
+          `Success using ${model}`
+        );
 
-    } catch (error) {
-      lastError = error;
+        return response.text;
 
-      console.error(
-        `Gemini attempt ${attempt} failed:`,
-        error.message
-      );
+      } catch (error) {
 
-      if (attempt < 3) {
-        await sleep(2000 * attempt);
+        lastError = error;
+
+        console.error(
+          `${model} attempt ${attempt} failed:`,
+          error.message
+        );
+
+        // Do not retry errors such as 404
+        if (error.status !== 503) {
+          break;
+        }
+
+        if (attempt < 2) {
+          await sleep(1500);
+        }
       }
     }
+
+    console.log(
+      `${model} unavailable. Trying next model...`
+    );
   }
 
   throw lastError;
