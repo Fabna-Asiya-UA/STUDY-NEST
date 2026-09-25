@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 import {
   BrowserRouter,
@@ -11,9 +12,13 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+// Public Pages
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+
+// Profile
+import Profile from "./pages/profile/Profile";
 
 // ========================================
 // STUDENT PAGES
@@ -59,6 +64,9 @@ import QuizResult from "./pages/teacher/QuizResult";
 
 
 function App() {
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <BrowserRouter>
 
@@ -66,7 +74,37 @@ function App() {
 
         <Navbar />
 
-        <Sidebar />
+        {/* Mobile Menu Button */}
+        {!sidebarOpen && (
+          <button
+            className="mobile-menu-button"
+            onClick={() => setSidebarOpen(true)}
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+        )}
+
+        {/* Mobile Sidebar Overlay */}
+        {sidebarOpen && (
+          <div
+            className="sidebar-overlay"
+            onClick={() => setSidebarOpen(false)}
+          ></div>
+        )}
+
+        {/* ========================================
+            SIDEBAR
+        ======================================== */}
+
+        <Sidebar
+          isOpen={sidebarOpen}
+          setIsOpen={setSidebarOpen}
+        />
+
+        {/* ========================================
+            MAIN CONTENT
+        ======================================== */}
 
         <main className="main-content">
 
@@ -89,6 +127,20 @@ function App() {
             <Route
               path="/register"
               element={<Register />}
+            />
+
+
+            {/* ========================================
+                PROFILE
+            ======================================== */}
+
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
             />
 
 
@@ -171,11 +223,7 @@ function App() {
             />
 
 
-            {/* ========================================
-                STUDENT EXAMS
-            ======================================== */}
-
-            {/* Exam List */}
+            {/* Student Exams */}
 
             <Route
               path="/student/exams"
@@ -185,8 +233,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-
-            {/* Take Individual Exam */}
 
             <Route
               path="/student/exams/:id"
@@ -398,4 +444,3 @@ function App() {
 }
 
 export default App;
-

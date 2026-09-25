@@ -1,8 +1,9 @@
+
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./Sidebar.css";
 
-function Sidebar() {
+function Sidebar({ isOpen, setIsOpen }) {
   const { user } = useAuth();
 
   if (!user) {
@@ -10,16 +11,37 @@ function Sidebar() {
   }
 
   const getNavClass = ({ isActive }) =>
-    isActive
-      ? "sidebar-link active"
-      : "sidebar-link";
+    isActive ? "sidebar-link active" : "sidebar-link";
+
+  const handleNavClick = () => {
+    if (window.innerWidth <= 700) {
+      setIsOpen(false);
+    }
+  };
 
   return (
-    <aside className="studynest-sidebar">
+    <aside
+      className={`studynest-sidebar ${
+        isOpen ? "sidebar-open" : ""
+      }`}
+    >
 
-      {/* =========================
+      {/* ========================================
+          MOBILE CLOSE BUTTON
+      ======================================== */}
+
+      <button
+        className="mobile-close-button"
+        onClick={() => setIsOpen(false)}
+        aria-label="Close menu"
+      >
+        ✕
+      </button>
+
+
+      {/* ========================================
           SIDEBAR HEADER
-      ========================== */}
+      ======================================== */}
 
       <div className="sidebar-header">
 
@@ -42,16 +64,57 @@ function Sidebar() {
       </div>
 
 
-      {/* =========================
-          USER PROFILE
-      ========================== */}
+      {/* ========================================
+          VIEW PROFILE
+      ======================================== */}
+
+      <NavLink
+        to="/profile"
+        className={({ isActive }) =>
+          isActive
+            ? "sidebar-profile-link active"
+            : "sidebar-profile-link"
+        }
+        onClick={handleNavClick}
+      >
+
+        <div className="sidebar-profile-icon">
+          👤
+        </div>
+
+        <div className="sidebar-profile-text">
+
+          <strong>
+            View Profile
+          </strong>
+
+          <span>
+            {user.role === "teacher"
+              ? "Teacher Profile"
+              : "Student Profile"}
+          </span>
+
+        </div>
+
+        <span className="sidebar-profile-arrow">
+          →
+        </span>
+
+      </NavLink>
+
+
+      {/* ========================================
+          USER INFORMATION
+      ======================================== */}
 
       <div className="sidebar-user">
 
         <div className="sidebar-user-avatar">
+
           {user.name
             ?.charAt(0)
             ?.toUpperCase()}
+
         </div>
 
         <div className="sidebar-user-info">
@@ -69,20 +132,23 @@ function Sidebar() {
       </div>
 
 
-      {/* =========================
+      {/* ========================================
           NAVIGATION
-      ========================== */}
+      ======================================== */}
 
-      <nav className="sidebar-navigation">
+      <nav
+        className="sidebar-navigation"
+        onClick={handleNavClick}
+      >
 
         <p className="sidebar-section-title">
           MAIN MENU
         </p>
 
 
-        {/* =========================
+        {/* ========================================
             STUDENT MENU
-        ========================== */}
+        ======================================== */}
 
         {user.role === "student" && (
           <>
@@ -216,9 +282,9 @@ function Sidebar() {
         )}
 
 
-        {/* =========================
+        {/* ========================================
             TEACHER MENU
-        ========================== */}
+        ======================================== */}
 
         {user.role === "teacher" && (
           <>
@@ -265,8 +331,6 @@ function Sidebar() {
             </NavLink>
 
 
-            {/* CREATE ASSIGNMENT */}
-
             <NavLink
               to="/teacher/assignments/create"
               className={getNavClass}
@@ -281,8 +345,6 @@ function Sidebar() {
             </NavLink>
 
 
-            {/* CREATE QUIZ */}
-
             <NavLink
               to="/teacher/quizzes/create"
               className={getNavClass}
@@ -296,8 +358,6 @@ function Sidebar() {
               </span>
             </NavLink>
 
-
-            {/* CREATE EXAM */}
 
             <NavLink
               to="/teacher/exams/create"
@@ -346,9 +406,9 @@ function Sidebar() {
       </nav>
 
 
-      {/* =========================
+      {/* ========================================
           SIDEBAR FOOTER
-      ========================== */}
+      ======================================== */}
 
       <div className="sidebar-footer">
 
