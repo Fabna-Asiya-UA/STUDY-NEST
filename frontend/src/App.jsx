@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import "./App.css";
 import {
   BrowserRouter,
   Routes,
@@ -63,52 +64,46 @@ import TeacherPerformance from "./pages/teacher/Performance";
 import QuizResult from "./pages/teacher/QuizResult";
 
 
-function App() {
 
+function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <BrowserRouter>
-
       <AuthProvider>
+        <div className="app-shell">
+          <Navbar />
 
-        <Navbar />
-
-        {/* Mobile Menu Button */}
-        {!sidebarOpen && (
+          {/* Mobile menu button */}
           <button
+            type="button"
             className="mobile-menu-button"
             onClick={() => setSidebarOpen(true)}
-            aria-label="Open menu"
+            aria-label="Open navigation menu"
+            aria-controls="studynest-sidebar"
+            aria-expanded={sidebarOpen}
           >
             ☰
           </button>
-        )}
 
-        {/* Mobile Sidebar Overlay */}
-        {sidebarOpen && (
-          <div
-            className="sidebar-overlay"
-            onClick={() => setSidebarOpen(false)}
-          ></div>
-        )}
+          {/* Mobile sidebar overlay */}
+          {sidebarOpen && (
+            <div
+              className="sidebar-overlay"
+              onClick={() => setSidebarOpen(false)}
+              aria-hidden="true"
+            />
+          )}
 
-        {/* ========================================
-            SIDEBAR
-        ======================================== */}
+          {/* Responsive sidebar */}
+          <Sidebar
+            isOpen={sidebarOpen}
+            setIsOpen={setSidebarOpen}
+          />
 
-        <Sidebar
-          isOpen={sidebarOpen}
-          setIsOpen={setSidebarOpen}
-        />
-
-        {/* ========================================
-            MAIN CONTENT
-        ======================================== */}
-
-        <main className="main-content">
-
-          <Routes>
+          {/* Main content */}
+          <main className="main-content">
+            <Routes>
 
             {/* ========================================
                 PUBLIC ROUTES
@@ -433,12 +428,10 @@ function App() {
               }
             />
 
-          </Routes>
-
-        </main>
-
+           </Routes>
+          </main>
+        </div>
       </AuthProvider>
-
     </BrowserRouter>
   );
 }

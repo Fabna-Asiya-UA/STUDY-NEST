@@ -1,3 +1,4 @@
+
 import {
   createContext,
   useContext,
@@ -9,40 +10,32 @@ import api from "../services/api";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null
-  );
+  const [user, setUser] = useState(() => {
+    try {
+      const savedUser = localStorage.getItem("user");
+      return savedUser ? JSON.parse(savedUser) : null;
+    } catch {
+      localStorage.removeItem("user");
+      return null;
+    }
+  });
 
   const [loading, setLoading] = useState(false);
 
-
   // LOGIN
   const login = async (email, password) => {
-
     setLoading(true);
 
     try {
-
-      const response = await api.post(
-        "/auth/login",
-        {
-          email,
-          password
-        }
-      );
+      const response = await api.post("/auth/login", {
+        email,
+        password
+      });
 
       const { user, accessToken } = response.data;
 
-      localStorage.setItem(
-        "accessToken",
-        accessToken
-      );
-
-      localStorage.setItem(
-        "user",
-        JSON.stringify(user)
-      );
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
 
       setUser(user);
 
@@ -50,77 +43,51 @@ export const AuthProvider = ({ children }) => {
         success: true,
         user
       };
-
     } catch (error) {
-
       return {
         success: false,
         message:
-          error.response?.data?.message ||
-          "Login failed"
+          error.response?.data?.message || "Login failed"
       };
-
     } finally {
-
       setLoading(false);
-
     }
   };
 
-
   // REGISTER
-  const register = async (
-    name,
-    email,
-    password,
-    role
-  ) => {
-
+  const register = async (name, email, password, role) => {
     setLoading(true);
 
     try {
-
-      const response = await api.post(
-        "/auth/register",
-        {
-          name,
-          email,
-          password,
-          role
-        }
-      );
+      const response = await api.post("/auth/register", {
+        name,
+        email,
+        password,
+        role
+      });
 
       return {
         success: true,
         data: response.data
       };
-
     } catch (error) {
-
       return {
         success: false,
         message:
           error.response?.data?.message ||
           "Registration failed"
       };
-
     } finally {
-
       setLoading(false);
-
     }
   };
 
-
   // LOGOUT
   const logout = () => {
-
     localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
-
     setUser(null);
   };
-
 
   return (
     <AuthContext.Provider
@@ -137,7 +104,4 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);

@@ -23,6 +23,7 @@ import aiRoutes from "./routes/aiRoutes.js";
 import quizResultRoutes from "./routes/quizResultRoutes.js";
 import assignmentSubmissionRoutes from "./routes/assignmentSubmissionRoutes.js";
 import examRoutes from "./routes/examRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 import { notFound } from "./middleware/notFound.js";
 import { errorHandler } from "./middleware/errorHandler.js";
@@ -38,16 +39,43 @@ const app = express();
 app.use(helmet());
 
 
-// ========================================
-// CORS
-// ========================================
+
+/* ========================================
+   CORS
+======================================== */
+
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  "https://study-nest-tawny.vercel.app",
+  "http://localhost:5173",
+  "http://localhost:5174",
+]
+  .filter(Boolean)
+  .map((origin) => origin.replace(/\/$/, ""));
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true
+    origin: (origin, callback) => {
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      const normalizedOrigin = origin.replace(/\/$/, "");
+
+      if (allowedOrigins.includes(normalizedOrigin)) {
+        return callback(null, true);
+      }
+
+      console.error("CORS blocked origin:", origin);
+
+      return callback(
+        new Error(`CORS blocked origin: ${origin}`)
+      );
+    },
+    credentials: true,
   })
 );
+
 
 
 // ========================================
@@ -253,6 +281,10 @@ app.use(
   aiRoutes
 );
 
+
+
+// user routes
+app.use("/api/users", userRoutes);
 
 // ========================================
 // 404 - ROUTE NOT FOUND
